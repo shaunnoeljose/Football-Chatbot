@@ -5,6 +5,6 @@ xgboost
 scikit-learn
 shap
 matplotlib
-langchain
+langchain==0.0.127
 Pillow
 requests
