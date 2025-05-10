@@ -10,9 +10,15 @@ from difflib import get_close_matches
 from PIL import Image
 import json
 import re
+import requests
+import io
 
 # Loading the dataset
-df = pd.read_csv("final_football.csv")
+url = 'https://github.com/shaunnoeljose/Football-Chatbot/releases/download/data/final_football.csv'
+response = requests.get(url)
+csv_data = io.BytesIO(response.content)
+df = pd.read_csv(csv_data)
+
 xgb_model = XGBClassifier()
 xgb_model.load_model("xgb_model_player.json")
 
