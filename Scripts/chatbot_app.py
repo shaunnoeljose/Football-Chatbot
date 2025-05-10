@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBClassifier
 from sklearn.preprocessing import StandardScaler
+import ollama
 from langchain.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain         
