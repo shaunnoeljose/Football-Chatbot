@@ -4,7 +4,6 @@ import numpy as np
 from xgboost import XGBClassifier
 from sklearn.preprocessing import StandardScaler
 import ollama
-from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain         
 from difflib import get_close_matches
@@ -108,7 +107,8 @@ def best_players_for_team(team, season, scenario_features):
 
 #LangChain setup
 
-llm = Ollama(model= "mistral:7b-instruct") 
+llm = ollama.ollama(model="mistral:7b-instruct")
+
 prompt = PromptTemplate.from_template("""
 You are a football assistant. Extract this from the user query:
 - home_team
