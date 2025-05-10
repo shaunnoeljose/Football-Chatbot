@@ -20,7 +20,7 @@ csv_data = io.BytesIO(response.content)
 df = pd.read_csv(csv_data)
 
 xgb_model = XGBClassifier()
-xgb_model.load_model("xgb_model_player.json")
+xgb_model.load_model("Model/xgb_model_player.json")
 
 # Scaling numerical features
 expected_features = xgb_model.get_booster().feature_names
