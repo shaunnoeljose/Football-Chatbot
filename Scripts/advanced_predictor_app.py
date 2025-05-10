@@ -7,10 +7,14 @@ import shap
 import matplotlib.pyplot as plt
 
 # loading the data
+url = 'https://github.com/shaunnoeljose/Football-Chatbot/releases/download/data/final_football.csv'
+response = requests.get(url)
+csv_data = io.BytesIO(response.content)
+df = pd.read_csv(csv_data)
+
 xgb_model = XGBClassifier()
 xgb_model.load_model("Model/xgb_model_player.json")
 explainer = shap.TreeExplainer(xgb_model)
-df = pd.read_csv("Data/final_football.csv")
 
 # Scaling numerical features
 expected_features = xgb_model.get_booster().feature_names
