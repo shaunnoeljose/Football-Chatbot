@@ -107,7 +107,7 @@ def best_players_for_team(team, season, scenario_features):
 
 #LangChain setup
 
-llm = ollama.ollama(model="mistral:7b-instruct")
+llm = ollama.create(model="mistral:7b-instruct")
 
 prompt = PromptTemplate.from_template("""
 You are a football assistant. Extract this from the user query:
