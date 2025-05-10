@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 
 # loading the data
 xgb_model = XGBClassifier()
-xgb_model.load_model(r"C:\Users\shaun\Downloads\xgb_model_player.json")
+xgb_model.load_model("Model/xgb_model_player.json")
 explainer = shap.TreeExplainer(xgb_model)
-df = pd.read_csv(r"C:\Users\shaun\Downloads\final_football.csv")
+df = pd.read_csv("Data/final_football.csv")
 
 # Scaling numerical features
 expected_features = xgb_model.get_booster().feature_names
