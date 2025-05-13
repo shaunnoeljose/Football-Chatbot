@@ -11,6 +11,7 @@ import re
 import requests
 import io
 from langchain.llms import HuggingFaceHub
+from huggingface_hub import InferenceClient
 import streamlit as st
 
 # Streamlit interface
@@ -115,12 +116,23 @@ def best_players_for_team(team, season, scenario_features):
 
 #LangChain setup
 
-llm = HuggingFaceHub(
-    repo_id="google/flan-t5-large",
-    task="text2text-generation",
-    model_kwargs={"temperature": 0.7, "max_new_tokens": 512},
-    huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+# llm = HuggingFaceHub(
+#     repo_id="google/flan-t5-large",
+#     task="text2text-generation",
+#     model_kwargs={"temperature": 0.7, "max_new_tokens": 512},
+#     huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+# )
+
+# Initialize Hugging Face Inference Client
+hf_client = InferenceClient(
+    model="google/flan-t5-large",
+    token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 )
+
+def call_llm(prompt: str) -> str:
+    response = hf_client.text_generation(prompt, max_new_tokens=512, do_sample=False)
+    return response.strip()
+
 prompt = PromptTemplate.from_template("""
 You are a football assistant. Extract this from the user query:
 - home_team
@@ -143,7 +155,7 @@ Return as JSON in this format:
 Question: {question}
 """)
 
-chain = LLMChain(prompt=prompt, llm=llm)
+# chain = LLMChain(prompt=prompt, llm=llm)
 
 def compare_team_performance(season, scenario_features):
     matches = df[df['Season'] == season]
@@ -281,10 +293,11 @@ if user_query:
     st.chat_message("user").write(user_query)
     st.session_state.chat_history.append({"role": "user", "content": user_query})
 
-    response_json = chain.run(question=user_query)
-    st.code(response_json, language="json")  # Show parsed JSON for debugging
+    prompt_text = prompt.format(question=user_query)
+    response_text = call_llm(prompt_text)
+    st.code(response_text, language="json")
+    parsed = extract_json(response_text)
 
-    parsed = extract_json(response_json)
     if not parsed:
         response = "Could not parse response from the model. Please try rephrasing your question."
     scenario_dict = {}
