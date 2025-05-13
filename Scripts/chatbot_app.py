@@ -86,14 +86,15 @@ def best_players_for_team(team, season, scenario_features):
         scores.append((row['Player'], score))
     return [p[0] for p in sorted(scores, key=lambda x: x[1], reverse=True)[:5]]
 
-# Setup Inference Client with flan-t5-base
-hf_client = InferenceClient(
-    model="google/flan-t5-base",
-    token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
-)
+hf_client = InferenceClient(token=st.secrets["HUGGINGFACEHUB_API_TOKEN"])
 
 def call_llm(prompt: str) -> str:
-    response = hf_client.text_generation(prompt, max_new_tokens=512, do_sample=False)
+    response = hf_client.text_generation(
+        prompt,
+        model="google/flan-t5-base",  # ✅ Provide model here, not in constructor
+        max_new_tokens=512,
+        do_sample=False
+    )
     return response.strip()
 
 def extract_json(text): 
