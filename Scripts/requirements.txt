@@ -9,5 +9,5 @@ langchain==0.0.127
 Pillow
 requests
 ollama
-langchain_community
+langchain
 huggingface_hub
