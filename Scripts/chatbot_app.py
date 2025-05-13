@@ -149,7 +149,7 @@ def compare_team_performance(season, scenario_features):
 
     # Apply scenario filters
     filtered = matches.copy()
-    for key, val in scenario_dict.items():
+    for key, val in scenario_features.items():
         if key in filtered.columns:
             filtered = filtered[filtered[key] == val]
 
