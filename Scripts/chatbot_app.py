@@ -129,7 +129,7 @@ hf_client = InferenceClient(
 )
 
 def call_llm(prompt: str) -> str:
-    response = hf_client.text_generation(prompt, max_new_tokens=512, do_sample=False)
+    response = hf_client.text_to_text(prompt, max_new_tokens=512, do_sample=False)
     return response.strip()
 
 prompt = PromptTemplate.from_template("""
