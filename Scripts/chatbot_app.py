@@ -119,6 +119,7 @@ llm = HuggingFaceHub(
     repo_id="google/flan-t5-large",  # You can use other models like "tiiuae/falcon-7b-instruct"
     model_kwargs={"temperature": 0.7, "max_length": 512},
     huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+    task="text2text-generation"
 )
 prompt = PromptTemplate.from_template("""
 You are a football assistant. Extract this from the user query:
