@@ -10,4 +10,4 @@ Pillow
 requests
 ollama
 langchain
-huggingface_hub
+huggingface_hub>=0.21.0
