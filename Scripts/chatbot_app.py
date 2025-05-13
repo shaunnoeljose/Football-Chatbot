@@ -3,7 +3,7 @@ import numpy as np
 from xgboost import XGBClassifier
 from sklearn.preprocessing import StandardScaler
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain             
+# from langchain.chains import LLMChain             
 from difflib import get_close_matches
 from PIL import Image
 import json
