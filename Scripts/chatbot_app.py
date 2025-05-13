@@ -114,7 +114,6 @@ def best_players_for_team(team, season, scenario_features):
     top_players = sorted_scores[:5]
     return [p[0] for p in top_players]
 
-#LangChain setup
 
 # llm = HuggingFaceHub(
 #     repo_id="google/flan-t5-large",
@@ -155,7 +154,6 @@ Return as JSON in this format:
 Question: {question}
 """)
 
-# chain = LLMChain(prompt=prompt, llm=llm)
 
 def compare_team_performance(season, scenario_features):
     matches = df[df['Season'] == season]
