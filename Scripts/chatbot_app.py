@@ -116,7 +116,7 @@ def best_players_for_team(team, season, scenario_features):
 
 
 # llm = HuggingFaceHub(
-#     repo_id="google/flan-t5-large",
+#     repo_id="google/flan-t5-xl",
 #     task="text2text-generation",
 #     model_kwargs={"temperature": 0.7, "max_new_tokens": 512},
 #     huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
