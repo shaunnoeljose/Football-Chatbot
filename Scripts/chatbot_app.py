@@ -117,9 +117,9 @@ def best_players_for_team(team, season, scenario_features):
 
 llm = HuggingFaceHub(
     repo_id="google/flan-t5-large",
-    model_kwargs={"temperature": 0.7, "max_length": 512},
-    huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"],
     task="text2text-generation"
+    model_kwargs={"temperature": 0.7, "max_new_tokens": 512},
+    huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 )
 prompt = PromptTemplate.from_template("""
 You are a football assistant. Extract this from the user query:
