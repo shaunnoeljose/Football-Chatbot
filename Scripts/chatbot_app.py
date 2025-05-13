@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBClassifier
 from sklearn.preprocessing import StandardScaler
-import ollama
-from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain             
 from difflib import get_close_matches
@@ -13,6 +11,7 @@ import json
 import re
 import requests
 import io
+from langchain.llms import HuggingFaceHub
 
 # Loading the dataset
 url = 'https://github.com/shaunnoeljose/Football-Chatbot/releases/download/data/final_football.csv'
@@ -108,7 +107,11 @@ def best_players_for_team(team, season, scenario_features):
 
 #LangChain setup
 
-llm = Ollama(model= "mistral:7b-instruct") 
+llm = HuggingFaceHub(
+    repo_id="google/flan-t5-large",  # You can use other models like "tiiuae/falcon-7b-instruct"
+    model_kwargs={"temperature": 0.7, "max_length": 512},
+    huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+)
 prompt = PromptTemplate.from_template("""
 You are a football assistant. Extract this from the user query:
 - home_team
