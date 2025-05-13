@@ -43,10 +43,15 @@ def standardize_team_name(name):
     return match[0] if match else name
 
 # LLM setup (FLAN-T5-Base)
-hf_client = InferenceClient(model="google/flan-t5-base", token=st.secrets["HUGGINGFACEHUB_API_TOKEN"])
+hf_client = InferenceClient(model="mistralai/Mistral-7B-Instruct-v0.1", token=st.secrets["HUGGINGFACEHUB_API_TOKEN"])
 
 def call_llm(prompt: str) -> str:
-    return hf_client.text_to_text(prompt).strip()
+    return hf_client.text_generation(
+        prompt,
+        model="mistralai/Mistral-7B-Instruct-v0.1",  # ✅ Must be text-generation model
+        max_new_tokens=512,
+        do_sample=False
+    ).strip()
 
 def extract_json(text: str):
     match = re.search(r"\{.*\}", text, re.DOTALL)
