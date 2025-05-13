@@ -124,7 +124,7 @@ def best_players_for_team(team, season, scenario_features):
 
 # Initialize Hugging Face Inference Client
 hf_client = InferenceClient(
-    model="google/flan-t5-xl",
+    model="tiiuae/falcon-7b-instruct",
     token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 )
 
