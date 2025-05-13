@@ -13,6 +13,11 @@ import requests
 import io
 from langchain.llms import HuggingFaceHub
 
+query_params = st.experimental_get_query_params()
+if "advanced_predictor_app" in query_params:
+    exec(open("advanced_predictor_app.py").read())
+    st.stop()
+    
 # Loading the dataset
 url = 'https://github.com/shaunnoeljose/Football-Chatbot/releases/download/data/final_football.csv'
 response = requests.get(url)
@@ -235,7 +240,7 @@ st.markdown("""
 </style>
 
 <div class="sticky-launch-button">
-    <a href="http://localhost:8502/advanced_predictor_app" target="_blank">
+    <a href="?advanced_predictor_app" target="_self">
         <button>🚀 Launch Advanced Predictor App</button>
     </a>
 </div>
