@@ -5,6 +5,8 @@ from xgboost import XGBClassifier
 from sklearn.preprocessing import StandardScaler
 import shap
 import matplotlib.pyplot as plt
+import requests
+import io
 
 # loading the data
 url = 'https://github.com/shaunnoeljose/Football-Chatbot/releases/download/data/final_football.csv'
