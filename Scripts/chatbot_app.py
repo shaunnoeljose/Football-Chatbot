@@ -18,7 +18,7 @@ st.set_page_config(page_title="⚽ Weather-Aware Football Chatbot", layout="cent
 
 query_params = st.query_params
 if "advanced_predictor_app" in query_params:
-    exec(open("advanced_predictor_app.py").read())
+    exec(open("Scripts/advanced_predictor_app.py").read())
     st.stop()
     
 # Loading the dataset
