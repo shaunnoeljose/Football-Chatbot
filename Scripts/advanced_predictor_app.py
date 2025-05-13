@@ -56,7 +56,6 @@ def predict_match(input_dict):
     return pred[0], df_input, shap_vals
 
 # Streamlit interface
-st.set_page_config(page_title="Football Predictor", layout="centered")
 st.title("⚽ Player-Aware Football Win Predictor")
 
 match_selector = st.selectbox("Select Match", df[['HomeTeam', 'AwayTeam', 'Season']].drop_duplicates()
