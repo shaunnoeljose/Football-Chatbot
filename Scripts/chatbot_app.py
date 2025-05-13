@@ -140,6 +140,7 @@ def compare_team_performance(season, scenario_features):
     matches = df[df['Season'] == season]
 
     # Apply scenario filters
+    filtered = matches.copy()
     for key, val in scenario_dict.items():
         if key in filtered.columns:
             filtered = filtered[filtered[key] == val]
