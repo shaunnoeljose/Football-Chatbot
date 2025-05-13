@@ -92,7 +92,7 @@ streamlit run chatbot_app.py
 
 ```mermaid
 flowchart TD
-    A[User Query via Streamlit Chat] --> B[Prompt Parsing using Huggingface API(Flan-T5-Large)]
+    A[User Query via Streamlit Chat] --> B[Prompt Parsing using Huggingface API -Flan-T5-Large]
     B --> C{Intent Detected}
     C -->|predict_win| D[Match Lookup and Weather Injection]
     C -->|best_players| E[Filter Players by Team and Weather]
