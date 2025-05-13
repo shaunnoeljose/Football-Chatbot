@@ -20,7 +20,7 @@
 
 ---
 ## ⛈️Overview
-Data has been used very extensively in the field of soccer. One prime example is the robust number of sport analysts in Liverpool who take key decisions for recruitment based on the data. I am a huge fan of soccer in general and heavily follow Spanish soccer (LaLiga). This project focuses on building an interactive Streamlit chatbot designed to analyze football matches and player performance under different weather conditions. Using an XGBoost classification model trained on match stats and player performance metrics, combined with natural language understanding via LangChain and Mistral(Ollama), the chatbot allows users to ask intuitive questions and receive smart, data-backed insights.
+Data has been used very extensively in the field of soccer. I am a huge fan of soccer in general and heavily follow Spanish soccer (LaLiga). This project focuses on building an AI-powered multi-page Streamlit chatbot application designed to analyze football matches and player performance under different weather conditions. It features a natural language chatbot interface and an advanced predictor with SHAP-based model interpretability. Using an XGBoost classification model trained on match stats and player performance metrics, combined with natural language understanding via LangChain and Mistral(Ollama), the chatbot allows users to ask intuitive questions and receive smart, data-backed insights.
 
 ---
 ## 🧠What Does This Chatbot Do?
@@ -42,10 +42,21 @@ Data has been used very extensively in the field of soccer. One prime example is
 <p align="center">Clicking on the image above will take you to the demo video.</p>
 
 ---
-## 📸Chatbot Interface
+## 📸Chatbot Interface and Features
 
 ![Chatbot Demo](Assets/Tool_demo.png)
 
+Chatbot Assistant (Home Page)
+- Understands natural language questions using Hugging Face LLMs.
+- Predicts match outcomes based on team, season, and weather scenario.
+- Recommends best players under specified weather conditions.
+- Compares team performance across various weather types.
+
+Advanced Predictor
+- Select any match and simulate scenarios like *"Windy derby"* or *"Rainy winter"*.
+- Predicts match outcome using a trained XGBoost model.
+- Uses SHAP to explain player and feature impact on win probability.
+- Recommends top players tailored to scenario and team.
 ---
 ## 💻Setup Instructions
 ```
