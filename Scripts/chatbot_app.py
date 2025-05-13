@@ -13,7 +13,7 @@ import requests
 import io
 from langchain.llms import HuggingFaceHub
 
-query_params = st.experimental_get_query_params()
+query_params = st.query_params()
 if "advanced_predictor_app" in query_params:
     exec(open("advanced_predictor_app.py").read())
     st.stop()
