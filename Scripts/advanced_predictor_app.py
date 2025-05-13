@@ -15,7 +15,7 @@ csv_data = io.BytesIO(response.content)
 df = pd.read_csv(csv_data)
 
 xgb_model = XGBClassifier()
-xgb_model.load_model("Model/xgb_model_player.json")
+xgb_model.load_model("Model/xgb_model.json")
 explainer = shap.TreeExplainer(xgb_model)
 
 # Scaling numerical features
