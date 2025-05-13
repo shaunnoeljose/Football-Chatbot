@@ -241,7 +241,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-logo_path = "C:/Users/shaun/Downloads/Football_Logo.png"
+logo_path = "Assets/Football_Logo.png"
 logo_image = Image.open(logo_path)
 
 # Setting the streamlit layout
