@@ -13,6 +13,10 @@ import requests
 import io
 from langchain.llms import HuggingFaceHub
 
+
+# Streamlit interface
+st.set_page_config(page_title="⚽ Weather-Aware Football Chatbot", layout="centered")
+
 query_params = st.experimental_get_query_params()
 if "advanced_predictor_app" in query_params:
     exec(open("advanced_predictor_app.py").read())
@@ -189,8 +193,6 @@ def extract_json(text):
         return json.loads(match.group(0))
     return json.loads(text)
 
-# Streamlit interface
-st.set_page_config(page_title="⚽ Weather-Aware Football Chatbot", layout="centered")
 
 st.markdown("""
 <style>
