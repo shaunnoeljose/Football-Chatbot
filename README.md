@@ -14,13 +14,13 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![ML Model](https://img.shields.io/badge/Model-XGBoost-blue)
 ![Made With](https://img.shields.io/badge/Built%20with-Python%203.10-blue?logo=python)
-![LangChain](https://img.shields.io/badge/Powered%20by-LangChain-%23009688?logo=langchain)
-![LLM](https://img.shields.io/badge/LLM-Mistral%20Coder-informational)
+![HuggingFace](https://img.shields.io/badge/Powered%20by-LangChain-%23009688?logo=langchain)
+![LLM](https://img.shields.io/badge/LLM-flan-t5-large%20Coder-informational)
 ![Runtime](https://img.shields.io/badge/LLM%20Runtime-Ollama-lightgrey)
 
 ---
 ## ⛈️Overview
-Data has been used very extensively in the field of soccer. I am a huge fan of soccer in general and heavily follow Spanish soccer (LaLiga). This project focuses on building an AI-powered multi-page Streamlit chatbot application designed to analyze football matches and player performance under different weather conditions. It features a natural language chatbot interface and an advanced predictor with SHAP-based model interpretability. Using an XGBoost classification model trained on match stats and player performance metrics, combined with natural language understanding via LangChain and Mistral(Ollama), the chatbot allows users to ask intuitive questions and receive smart, data-backed insights.
+Data has been used very extensively in the field of soccer. I am a huge fan of soccer in general and heavily follow Spanish soccer (LaLiga). This project focuses on building an AI-powered multi-page Streamlit chatbot application designed to analyze football matches and player performance under different weather conditions. It features a natural language chatbot interface and an advanced predictor with SHAP-based model interpretability. Using an XGBoost classification model trained on match stats and player performance metrics, combined with natural language understanding via Huggingface API (Flan-T5-Large), the chatbot allows users to ask intuitive questions and receive smart, data-backed insights.
 
 ---
 ## 🧠What Does This Chatbot Do?
@@ -47,7 +47,7 @@ Data has been used very extensively in the field of soccer. I am a huge fan of s
 ![Chatbot Demo](Assets/Tool_demo.png)
 
 Chatbot Assistant (Home Page)
-- Understands natural language questions using Hugging Face LLMs.
+- Understands natural language questions using Hugging Face Flan-T5-Large LLM.
 - Predicts match outcomes based on team, season, and weather scenario.
 - Recommends best players under specified weather conditions.
 - Compares team performance across various weather types.
@@ -71,10 +71,10 @@ source venv/bin/activate  # or `venv\Scripts\activate` on Windows
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4.Install Ollama and Mistral
-Download and install Ollama from https://ollama.com/library/mistral:instruct
-After installation, make sure to Start mistral in your terminal with:
-ollama pull mistral:7b
+# 4.Setting up hugging face
+Create a file called .streamlit/secrets.toml:
+HUGGINGFACEHUB_API_TOKEN = "your_huggingface_token_here"
+Get a token from: https://huggingface.co/settings/tokens
 
 # 4. Launch the chatbot
 streamlit run chatbot_app.py
@@ -91,7 +91,7 @@ streamlit run chatbot_app.py
 
 ```mermaid
 flowchart TD
-    A[User Query via Streamlit Chat] --> B[Prompt Parsing using LangChain and Mistral]
+    A[User Query via Streamlit Chat] --> B[Prompt Parsing using Huggingface API(Flan-T5-Large)]
     B --> C{Intent Detected}
     C -->|predict_win| D[Match Lookup and Weather Injection]
     C -->|best_players| E[Filter Players by Team and Weather]
@@ -191,7 +191,7 @@ flowchart TD
 | `XGBoost`         | Predictive model for match outcomes       |
 | `Streamlit`       | Web interface for chatbot and UI          |
 | `LangChain`       | Prompt processing and chain management    |
-| `Mistral (local)`| LLM used for natural language understanding |
+| `Flan-T5-Large`   | LLM used for text-to-text tasks            |
 | `Pandas` / `NumPy`| Data manipulation and preprocessing       |
 | `Matplotlib`      | SHAP explanation plots                    |
 
@@ -204,6 +204,6 @@ flowchart TD
 - Inspired and powered by the open-source ecosystem:
   - [LangChain](https://www.langchain.com/)
   - [Ollama](https://ollama.ai/)
-  - [Mistral](https://ollama.com/library/mistral)
+  - [Huggingface](https://huggingface.co/)
   - [Streamlit](https://streamlit.io/)
   - [XGBoost](https://xgboost.readthedocs.io/)
