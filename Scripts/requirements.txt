@@ -10,3 +10,4 @@ Pillow
 requests
 ollama
 langchain_community
+huggingface_hub
