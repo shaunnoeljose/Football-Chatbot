@@ -1,4 +1,3 @@
-import streamlit as st
 import pandas as pd
 import numpy as np
 from xgboost import XGBClassifier
@@ -12,7 +11,7 @@ import re
 import requests
 import io
 from langchain.llms import HuggingFaceHub
-
+import streamlit as st
 
 # Streamlit interface
 st.set_page_config(page_title="⚽ Weather-Aware Football Chatbot", layout="centered")
