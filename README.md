@@ -15,6 +15,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![ML Model](https://img.shields.io/badge/Model-XGBoost-blue)
 ![Made With](https://img.shields.io/badge/Built%20with-Python%203.10-blue?logo=python)
+![LangChain](https://img.shields.io/badge/Powered%20by-LangChain-%23009688?logo=langchain)
 ![Hugging Face](https://img.shields.io/badge/LLM%20Provider-HuggingFace-%23ffcc00?logo=huggingface&logoColor=black)
 ![Local LLM](https://img.shields.io/badge/Model-mistral--7b-blueviolet)
 ![Runtime](https://img.shields.io/badge/LLM%20Runtime-Ollama-lightgrey)
