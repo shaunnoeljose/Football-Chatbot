@@ -16,7 +16,7 @@
 ![ML Model](https://img.shields.io/badge/Model-XGBoost-blue)
 ![Made With](https://img.shields.io/badge/Built%20with-Python%203.10-blue?logo=python)
 ![Hugging Face](https://img.shields.io/badge/LLM%20Provider-HuggingFace-%23ffcc00?logo=huggingface&logoColor=black)
-![LLM](https://img.shields.io/badge/Model-mistral--7b-blueviolet)
+![Local LLM](https://img.shields.io/badge/Model-mistral--7b-blueviolet)
 ![Runtime](https://img.shields.io/badge/LLM%20Runtime-Ollama-lightgrey)
 
 ---
