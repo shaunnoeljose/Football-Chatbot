@@ -21,7 +21,7 @@
 
 ---
 ## ⛈️Overview
-Data has been used very extensively in the field of soccer. I am a huge fan of soccer in general and heavily follow Spanish soccer (LaLiga). This project focuses on building an AI-powered multi-page Streamlit chatbot application designed to analyze football matches and player performance under different weather conditions. It features a natural language chatbot interface and an advanced predictor with SHAP-based model interpretability. Using an XGBoost classification model trained on match stats and player performance metrics, combined with natural language understanding via Huggingface API (Flan-T5-Large), the chatbot allows users to ask intuitive questions and receive smart, data-backed insights.
+Data has been used very extensively in the field of soccer. I am a huge fan of soccer in general and heavily follow Spanish soccer (LaLiga). This project focuses on building an AI-powered multi-page Streamlit chatbot application designed to analyze football matches and player performance under different weather conditions. It features a natural language chatbot interface and an advanced predictor with SHAP-based model interpretability. Using an XGBoost classification model trained on match stats and player performance metrics, combined with natural language understanding via mistral--7b locally and a Huggingface API model in the cloud, the chatbot allows users to ask intuitive questions and receive smart, data-backed insights.
 
 ---
 ## 🧠What Does This Chatbot Do?
@@ -72,12 +72,17 @@ source venv/bin/activate  # or `venv\Scripts\activate` on Windows
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4.Setting up hugging face
+# 4.Install Ollama and Mistral(locally)
+Download and install Ollama from https://ollama.com/library/mistral:instruct
+After installation, make sure to Start mistral in your terminal with:
+ollama pull mistral:7b
+
+# 5.Setting up hugging face(for cloud deployment)
 Create a file called .streamlit/secrets.toml:
 HUGGINGFACEHUB_API_TOKEN = "your_huggingface_token_here"
 Get a token from: https://huggingface.co/settings/tokens
 
-# 4. Launch the chatbot
+# 6. Launch the chatbot
 streamlit run chatbot_app.py
 
 ```
@@ -92,7 +97,7 @@ streamlit run chatbot_app.py
 
 ```mermaid
 flowchart TD
-    A[User Query via Streamlit Chat] --> B[Prompt Parsing using Huggingface API -Flan-T5-Large]
+    A[User Query via Streamlit Chat] --> B[Prompt Parsing using LangChain and Mistral / Huggingface API]
     B --> C{Intent Detected}
     C -->|predict_win| D[Match Lookup and Weather Injection]
     C -->|best_players| E[Filter Players by Team and Weather]
@@ -187,14 +192,15 @@ flowchart TD
 
 ## 🔧Tech Stack
 
-| Tool              | Usage                                    |
-|-------------------|-------------------------------------------|
-| `XGBoost`         | Predictive model for match outcomes       |
-| `Streamlit`       | Web interface for chatbot and UI          |
-| `LangChain`       | Prompt processing and chain management    |
-| `Flan-T5-Large`   | LLM used for text-to-text tasks            |
-| `Pandas` / `NumPy`| Data manipulation and preprocessing       |
-| `Matplotlib`      | SHAP explanation plots                    |
+| Tool                | Usage                                     |
+|-------------------  |-------------------------------------------|
+| `XGBoost`           | Predictive model for match outcomes       |
+| `Streamlit`         | Web interface for chatbot and UI          |
+| `LangChain`         | Prompt processing and chain management    |
+| `Mistral (local)`   | Local LLM used for natural language tasks |
+| `Hugging face Model`| LLM used for text-to-text tasks           |
+| `Pandas` / `NumPy`  | Data manipulation and preprocessing       |
+| `Matplotlib`        | SHAP explanation plots                    |
 
 ---
 
@@ -205,6 +211,7 @@ flowchart TD
 - Inspired and powered by the open-source ecosystem:
   - [LangChain](https://www.langchain.com/)
   - [Ollama](https://ollama.ai/)
+  - [Mistral](https://ollama.com/library/mistral)
   - [Huggingface](https://huggingface.co/)
   - [Streamlit](https://streamlit.io/)
   - [XGBoost](https://xgboost.readthedocs.io/)
